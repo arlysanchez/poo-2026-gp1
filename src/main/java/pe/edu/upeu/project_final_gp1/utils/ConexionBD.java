@@ -13,7 +13,6 @@ public class ConexionBD {
                 String url = "jdbc:sqlite:C:/sqlite/db/reserva_gp1.db";
                 connection = DriverManager.getConnection(url);
                 connection.setAutoCommit(true);
-
                 try(Statement st = connection.createStatement()){
                     st.execute("PRAGMA foreign_keys = ON;");
                 }
