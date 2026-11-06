@@ -8,6 +8,7 @@ module pe.edu.upeu.project_final_gp1 {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires javafx.base;
+    requires javafx.graphics;
 
     opens pe.edu.upeu.project_final_gp1 to javafx.fxml;
     opens pe.edu.upeu.project_final_gp1.model to javafx.base, javafx.fxml;

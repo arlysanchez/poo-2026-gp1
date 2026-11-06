@@ -36,13 +36,13 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
-    -fx-background-radius: 25;
+    -fx-background-radius: 15;
     -fx-cursor: hand;
     -fx-padding: 10 30 10 30;
 }
 
 .button-login:hover {
-    -fx-background-color: #d48f0c;
+    -fx-background-color: #014074;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
 }
 

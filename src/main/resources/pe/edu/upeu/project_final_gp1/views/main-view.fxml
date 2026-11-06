@@ -25,7 +25,7 @@
                     </HBox.margin>
                 </Label>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Label text="Bienvenido, Usuario" textFill="#014074">
+                <Label text="Bienvenido, Usuario" fx:id="lblUsuario" textFill="#014074">
                     <font>
                         <Font name="System Italic" size="13.0"/>
                     </font>
@@ -40,12 +40,16 @@
     <left>
         <VBox prefWidth="200.0" styleClass="sidebar" BorderPane.alignment="CENTER">
             <children>
-                <Button maxWidth="-Infinity" mnemonicParsing="false"
+                <Button maxWidth="Infinity" mnemonicParsing="false"
                         onAction="#showHome" styleClass="nav-button" text="Inicio"/>
-                <Button maxWidth="-Infinity" mnemonicParsing="false"
+                <Button maxWidth="Infinity" mnemonicParsing="false"
                         onAction="#showCliente" styleClass="nav-button" text="Clientes"/>
-                <Button maxWidth="-Infinity" mnemonicParsing="false"
+                <Button maxWidth="Infinity" mnemonicParsing="false"
                         onAction="#showHabitacion" styleClass="nav-button" text="Habitaciones"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button maxWidth="Infinity" mnemonicParsing="false"
+                        onAction="#handleLogout" styleClass="nav-button" style="-fx-text-fill: #ff6666"
+                        text="Cerrar Sesion"/>
             </children>
         </VBox>
     </left>
