@@ -38,9 +38,14 @@ public class MainController {
     private void showCliente(){
         loadView("cliente-view.fxml");
     }
+
     @FXML
     private void showHabitacion(){
         loadView("habitacion-view.fxml");
+    }
+    @FXML
+    private void showReserva(){
+        loadView("reserva-view.fxml");
     }
 
 

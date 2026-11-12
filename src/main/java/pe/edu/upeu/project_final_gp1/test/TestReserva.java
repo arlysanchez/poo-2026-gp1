@@ -93,7 +93,7 @@ public class TestReserva {
        // t.insert();
        // t.updateStatus();
        // t.list();
-        t.validateHab();
+       // t.validateHab();
     }
 
 }

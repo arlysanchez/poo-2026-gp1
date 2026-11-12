@@ -1,9 +1,7 @@
 package pe.edu.upeu.project_final_gp1.implementacion;
 
 import pe.edu.upeu.project_final_gp1.interfaces.IReservaDao;
-import pe.edu.upeu.project_final_gp1.model.Cliente;
-import pe.edu.upeu.project_final_gp1.model.Habitacion;
-import pe.edu.upeu.project_final_gp1.model.Reserva;
+import pe.edu.upeu.project_final_gp1.model.*;
 import pe.edu.upeu.project_final_gp1.model.Reserva;
 import pe.edu.upeu.project_final_gp1.utils.ConexionBD;
 
@@ -60,18 +58,19 @@ public class ReservaDaoImpl implements IReservaDao {
         List<Reserva> lista = new ArrayList<>();
         String query = " SELECT r.*,c.nombres ||' ' || c.apellidos AS nombre_completo, " +
                 " c.dni,h.numero,h.numeroPiso,h.numeroHabitacion,h.precio, " +
-                " h.estado AS estado_hab " +
-                " FROM reserva r,cliente c, habitacion h " +
+                " h.estado AS estado_hab, u.user " +
+                " FROM reserva r,cliente c, habitacion h, usuario u " +
                 " WHERE r.clienteId = c.idcliente  " +
-                " AND r.habitacionId = h.idhabitacion ";
+                " AND r.habitacionId = h.idhabitacion " +
+                " AND r.usuarioId = u.idusuario ";
         try (Connection cn = ConexionBD.getConnection();
              PreparedStatement st = cn.prepareStatement(query);
-             ResultSet rs = st.executeQuery();
-        ) {
+             ResultSet rs = st.executeQuery();) {
             while (rs.next()) {
                 Cliente cl = new Cliente();
                 Habitacion h = new Habitacion();
                 Reserva r = new Reserva();
+                Usuario u = new Usuario();
                 cl.setIdcliente(rs.getInt("clienteId"));
                 cl.setNombres(rs.getString("nombre_completo"));
                 cl.setDni(rs.getString("dni"));
@@ -89,9 +88,12 @@ public class ReservaDaoImpl implements IReservaDao {
                 r.setTotal(rs.getDouble("total"));
                 r.setEstado(rs.getString("estado"));
 
+                u.setIdusuario(rs.getInt("usuarioId"));
+                u.setUser(rs.getString("user"));
+
                 r.setCliente(cl);
                 r.setHabitacion(h);
-
+                r.setUsuario(u);
                 lista.add(r);
             }
         } catch (SQLException e) {
