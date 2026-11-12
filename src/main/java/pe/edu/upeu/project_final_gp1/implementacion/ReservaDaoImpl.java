@@ -20,7 +20,7 @@ public class ReservaDaoImpl implements IReservaDao {
     public boolean insert(Reserva r) {
         boolean flag = false;
         String query = " INSERT INTO reserva(clienteId,habitacionId,fecha_reserva,fecha_ingreso, " +
-                " fecha_salida,total,estado) VALUES(?,?,?,?,?,?,?);  ";
+                " fecha_salida,total,estado,usuarioId) VALUES(?,?,?,?,?,?,?,?);  ";
         try (Connection cn = ConexionBD.getConnection();
              PreparedStatement st = cn.prepareStatement(query);) {
             st.setInt(1, r.getCliente().getIdcliente());
@@ -30,6 +30,7 @@ public class ReservaDaoImpl implements IReservaDao {
             st.setString(5, r.getFechaSalida().toString());
             st.setDouble(6, r.getTotal());
             st.setString(7, r.getEstado());
+            st.setInt(8, r.getUsuario().getIdusuario());
             st.executeUpdate();
             flag = true;
         } catch (SQLException e) {

@@ -4,7 +4,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import pe.edu.upeu.project_final_gp1.implementacion.ReservaDaoImpl;
 import pe.edu.upeu.project_final_gp1.interfaces.IReservaDao;
 import pe.edu.upeu.project_final_gp1.model.Reserva;
@@ -133,6 +138,28 @@ public class ReservaController {
             if (reservaDao.updateStatus(select)){
                 cargarDatos();
             }
+        }
+    }
+    @FXML
+    private void handleNew(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass()
+                    .getResource("/pe/edu/upeu/project_final_gp1/views/reserva-form.fxml"));
+            Parent root = loader.load();
+            ReservaFormController controller = loader.getController();
+            Stage stage = new Stage();
+            stage.setTitle("Nueva Reserva");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+            if (controller.isGuardado()){
+                cargarDatos();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = alertsUtils.viewAlerts("Error",
+                    "No se pudo abrir el form","ERROR");
+            alert.showAndWait();
         }
     }
 }

@@ -23,7 +23,7 @@
                     <font><Font name="System Bold" size="20.0"/></font>
                 </Label>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button mnemonicParsing="false"  styleClass="button-login" text="+ NUEVA RESERVA"/>
+                <Button mnemonicParsing="false" onAction="#handleNew" styleClass="button-login" text="+ NUEVA RESERVA"/>
             </children>
 
         </HBox>
