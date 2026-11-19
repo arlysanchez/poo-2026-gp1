@@ -7,6 +7,8 @@ module pe.edu.upeu.project_final_gp1 {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    //requiero la dependencia de sqlite
+    requires org.xerial.sqlitejdbc;
     requires javafx.base;
     requires javafx.graphics;
 
